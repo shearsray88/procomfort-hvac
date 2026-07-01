@@ -12,7 +12,7 @@ export default function Navigation() {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white border-b border-gray-mid shadow-sm' : 'bg-transparent'}`}>
+    <header className="sticky top-0 z-50 bg-gray-900 border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 h-16 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2">
           <div className="w-7 h-7 bg-brand flex items-center justify-center rounded">

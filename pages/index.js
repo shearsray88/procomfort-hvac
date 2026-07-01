@@ -7,6 +7,7 @@ import WhyUs from '../components/WhyUs';
 import Reviews from '../components/Reviews';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
+import MapSection from '../components/MapSection';
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <Reviews />
         <Contact />
       </main>
+      <MapSection />
       <Footer />
     </>
   );

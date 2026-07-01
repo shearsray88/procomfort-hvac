@@ -1,30 +1,44 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mdarwbrv';
+
 const SERVICES = [
-  'AC Installation',
-  'AC Repair',
-  'Heating Repair',
-  'Furnace Installation',
-  'Maintenance Plan',
-  'Smart Thermostat',
-  'Emergency Service',
-  'Other',
+  'AC Installation', 'AC Repair', 'Heating Repair', 'Furnace Installation',
+  'Maintenance Plan', 'Smart Thermostat', 'Emergency Service', 'Other',
 ];
 
 export default function Contact() {
   const [status, setStatus] = useState('idle');
   const [selected, setSelected] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
-    setTimeout(() => setStatus('success'), 900);
+    const form = e.target;
+    const data = new FormData(form);
+    data.append('service', selected);
+    data.append('_website', 'ProComfort HVAC');
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+      if (res.ok) {
+        setStatus('success');
+        form.reset();
+        setSelected('');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   };
 
   return (
     <section id="contact" className="py-28 bg-text-dark relative overflow-hidden">
-      {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand/10 rounded-full blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-6 sm:px-10">
@@ -45,7 +59,6 @@ export default function Contact() {
         </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left contact info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -84,7 +97,6 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Right form — spans 2 cols */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -107,18 +119,18 @@ export default function Contact() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className="font-sans text-xs text-white/40 uppercase tracking-wide mb-2 block">First Name</label>
-                    <input required placeholder="John"
+                    <input required name="first_name" placeholder="John"
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-brand"/>
                   </div>
                   <div>
                     <label className="font-sans text-xs text-white/40 uppercase tracking-wide mb-2 block">Last Name</label>
-                    <input required placeholder="Smith"
+                    <input required name="last_name" placeholder="Smith"
                       className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-brand"/>
                   </div>
                 </div>
                 <div>
                   <label className="font-sans text-xs text-white/40 uppercase tracking-wide mb-2 block">Phone Number</label>
-                  <input required type="tel" placeholder="(720) 000-0000"
+                  <input required name="phone" type="tel" placeholder="(720) 000-0000"
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-brand"/>
                 </div>
                 <div>
@@ -142,9 +154,12 @@ export default function Contact() {
                 </div>
                 <div>
                   <label className="font-sans text-xs text-white/40 uppercase tracking-wide mb-2 block">Tell Us More (optional)</label>
-                  <textarea rows={3} placeholder="Describe the issue or what you are looking for..."
+                  <textarea rows={3} name="message" placeholder="Describe the issue or what you are looking for..."
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-brand resize-none"/>
                 </div>
+                {status === 'error' && (
+                  <p className="text-red-400 text-xs text-center">Something went wrong. Please try again or call us directly.</p>
+                )}
                 <button type="submit" disabled={status === 'loading'}
                   className="btn-primary w-full justify-center py-4 mt-1">
                   {status === 'loading' ? 'Sending...' : 'Request Free Quote'}
