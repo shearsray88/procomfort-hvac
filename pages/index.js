@@ -14,7 +14,6 @@ export default function Home() {
     <>
       <Head>
         <title>ProComfort HVAC - Denver Heating & Cooling Experts</title>
-        <meta name="description" content="Denver's trusted HVAC specialists. AC installation, heating repair, and maintenance plans for homes across the Front Range. Get a free quote today." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
