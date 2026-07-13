@@ -19,10 +19,10 @@ export default function Stats() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="px-8 py-6 first:pl-0 last:pr-0"
+              className="px-4 sm:px-8 py-6 first:pl-0 last:pr-0 overflow-hidden"
             >
-              <p className="font-serif text-4xl font-normal text-white mb-2">{s.value}</p>
-              <p className="font-sans text-xs text-white/40 uppercase tracking-widest">{s.label}</p>
+              <p className="font-serif text-3xl sm:text-4xl font-normal text-white mb-2 whitespace-nowrap">{s.value}</p>
+              <p className="font-sans text-xs text-white/60 uppercase tracking-widest">{s.label}</p>
             </motion.div>
           ))}
         </div>

@@ -57,7 +57,7 @@ export default function Reviews() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white p-8"
+              className="bg-white p-8 flex flex-col justify-between"
             >
               <div className="flex gap-0.5 mb-6">
                 {[0,1,2,3,4].map(i => <span key={i} className="text-brand text-sm">★</span>)}

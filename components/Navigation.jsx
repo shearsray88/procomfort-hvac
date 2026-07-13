@@ -28,7 +28,7 @@ export default function Navigation() {
             </a>
           ))}
         </nav>
-        <a href="#contact" className="hidden md:block btn-primary text-xs px-5 py-2.5">
+        <a href="#contact" className="hidden md:block text-xs font-sans font-semibold text-white border border-white/25 hover:border-brand hover:text-brand-light rounded-lg px-5 py-2.5 transition-colors">
           Get a Free Quote
         </a>
         <button className="md:hidden text-white" onClick={() => setMenuOpen(!menuOpen)}>

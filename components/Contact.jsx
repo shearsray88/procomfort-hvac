@@ -120,18 +120,18 @@ export default function Contact() {
                   <div>
                     <label className="font-sans text-xs text-white/40 uppercase tracking-wide mb-2 block">First Name</label>
                     <input required name="first_name" placeholder="John"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-brand"/>
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-brand"/>
                   </div>
                   <div>
                     <label className="font-sans text-xs text-white/40 uppercase tracking-wide mb-2 block">Last Name</label>
                     <input required name="last_name" placeholder="Smith"
-                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-brand"/>
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-brand"/>
                   </div>
                 </div>
                 <div>
                   <label className="font-sans text-xs text-white/40 uppercase tracking-wide mb-2 block">Phone Number</label>
                   <input required name="phone" type="tel" placeholder="(720) 000-0000"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-brand"/>
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-brand"/>
                 </div>
                 <div>
                   <label className="font-sans text-xs text-white/40 uppercase tracking-wide mb-2 block">Service Needed</label>
@@ -141,9 +141,9 @@ export default function Contact() {
                         key={s}
                         type="button"
                         onClick={() => setSelected(s)}
-                        className={`text-xs font-sans px-3 py-2 rounded-lg border transition-all ${
+                        className={`text-xs font-sans px-3 py-2 rounded-lg border transition-all duration-200 ${
                           selected === s
-                            ? 'bg-brand border-brand text-white'
+                            ? 'bg-brand border-brand text-white shadow-[0_0_0_1px_rgba(217,95,26,0.4),0_0_16px_rgba(217,95,26,0.5),inset_0_1px_0_rgba(255,255,255,0.25)]'
                             : 'bg-white/5 border-white/10 text-white/50 hover:border-brand/50'
                         }`}
                       >
@@ -155,7 +155,7 @@ export default function Contact() {
                 <div>
                   <label className="font-sans text-xs text-white/40 uppercase tracking-wide mb-2 block">Tell Us More (optional)</label>
                   <textarea rows={3} name="message" placeholder="Describe the issue or what you are looking for..."
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-brand resize-none"/>
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-brand resize-none"/>
                 </div>
                 {status === 'error' && (
                   <p className="text-red-400 text-xs text-center">Something went wrong. Please try again or call us directly.</p>

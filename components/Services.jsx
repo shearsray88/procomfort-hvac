@@ -64,7 +64,7 @@ export default function Services() {
             <p className="font-sans text-text-mid text-base leading-relaxed mb-8">
               From new system installs to emergency repairs, our licensed technicians handle it all. Colorado-certified, fully insured, and background-checked.
             </p>
-            <a href="#contact" className="btn-outline text-sm">See All Services</a>
+            <a href="#contact" className="btn-outline text-sm mb-8 lg:mb-0 inline-block">See All Services</a>
           </motion.div>
 
           <div className="grid sm:grid-cols-2 gap-px bg-gray-mid">

@@ -24,21 +24,35 @@ const LOCATIONS = [
 
 export default function MapSection() {
   const [active, setActive] = useState(LOCATIONS[0]);
+  const [mapActive, setMapActive] = useState(false);
 
   return (
-    <section className="bg-white">
+    <section className="bg-white pb-6">
       <div className="grid lg:grid-cols-2" style={{ minHeight: '280px' }}>
-        <div className="relative overflow-hidden" style={{ minHeight: '280px' }}>
+        <div
+          className="relative overflow-hidden group/map"
+          style={{ minHeight: '280px' }}
+          onClick={() => setMapActive(true)}
+          onMouseLeave={() => setMapActive(false)}
+        >
           <iframe
             key={active.id}
             src={active.mapUrl}
             width="100%"
             height="100%"
             style={{ border: 0, position: 'absolute', inset: 0 }}
+            className={mapActive ? 'pointer-events-auto' : 'pointer-events-none'}
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
+          {!mapActive && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover/map:bg-black/10 transition-colors pointer-events-none">
+              <span className="opacity-0 group-hover/map:opacity-100 transition-opacity bg-white/95 backdrop-blur-sm text-gray-700 text-xs font-semibold px-4 py-2 rounded-full shadow-sm">
+                Click to interact with map
+              </span>
+            </div>
+          )}
         </div>
 
         <div className="bg-text-dark p-8 lg:p-10 flex flex-col justify-center">
@@ -57,7 +71,7 @@ export default function MapSection() {
                 <button
                   key={l.id}
                   onClick={() => setActive(l)}
-                  className={`flex items-start gap-4 p-4 rounded-xl border text-left transition-all ${
+                  className={`flex items-start gap-4 p-4 rounded-xl border text-left transition-all min-h-[92px] ${
                     active.id === l.id
                       ? 'bg-brand/20 border-brand/50'
                       : 'bg-white/5 border-white/10 hover:border-brand/30'

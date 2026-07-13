@@ -48,7 +48,7 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="pt-10 pr-8 pb-8 border-b md:border-b-0 md:border-r border-gray-mid last:border-r-0"
+              className="pt-10 pr-8 pb-12 md:pb-8 border-b md:border-b-0 md:border-r border-gray-mid last:border-r-0"
             >
               <span className="font-serif text-5xl text-brand-light/30 font-normal block mb-6">{r.num}</span>
               <h3 className="font-sans font-semibold text-text-dark text-base mb-3">{r.title}</h3>
@@ -73,7 +73,7 @@ export default function WhyUs() {
             </p>
           </div>
           <a href="tel:+13035550182"
-            className="flex-shrink-0 bg-white text-brand font-sans font-bold text-sm px-8 py-4 rounded-lg hover:bg-gray-warm transition-colors">
+            className="flex-shrink-0 bg-white text-gray-900 font-sans font-bold text-sm px-8 py-4 rounded-lg hover:bg-gray-warm transition-colors">
             (303) 555-0182
           </a>
         </motion.div>
