@@ -27,6 +27,13 @@ export default function Footer() {
           <p className="font-sans text-white/20 text-xs">&copy; 2026 ProComfort HVAC. All rights reserved.</p>
           <p className="font-sans text-white/20 text-xs">Denver, CO &middot; License #CO-HVAC-48291</p>
         </div>
+
+        <div className="text-center mt-4">
+          <a href="https://duraysdev.com" target="_blank" rel="noopener noreferrer"
+            className="font-sans text-white/20 text-xs hover:text-white/50 transition-colors">
+            Design &amp; Development by Durays Dev
+          </a>
+        </div>
       </div>
     </footer>
   );
