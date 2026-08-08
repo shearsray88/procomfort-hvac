@@ -29,7 +29,7 @@ export default function Footer() {
         </div>
 
         <div className="text-center mt-4">
-          <a href="https://duraysdev.com" target="_blank" rel="noopener noreferrer"
+          <a href="https://duraysdev.com/portfolio/procomfort-hvac" target="_blank" rel="noopener noreferrer"
             className="font-sans text-white/20 text-xs hover:text-white/50 transition-colors">
             Design &amp; Development by Durays Dev
           </a>
