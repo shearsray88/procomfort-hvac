@@ -10,13 +10,13 @@ export default function Footer() {
               </div>
               <span className="font-sans font-semibold text-white text-sm">ProComfort <span className="text-brand-light">HVAC</span></span>
             </div>
-            <p className="font-sans text-white/30 text-xs">Serving Denver & Front Range since 2012</p>
+            <p className="font-sans text-white/70 text-xs">Serving Denver & Front Range since 2012</p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
             {['Services', 'About', 'Reviews', 'Contact'].map(item => (
               <a key={item} href={`#${item.toLowerCase()}`}
-                className="font-sans text-white/40 text-xs hover:text-white transition-colors">
+                className="font-sans text-white/70 text-xs hover:text-white transition-colors">
                 {item}
               </a>
             ))}
@@ -24,13 +24,13 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 mt-8 pt-8 flex flex-col sm:flex-row justify-between gap-3">
-          <p className="font-sans text-white/20 text-xs">&copy; 2026 ProComfort HVAC. All rights reserved.</p>
-          <p className="font-sans text-white/20 text-xs">Denver, CO &middot; License #CO-HVAC-48291</p>
+          <p className="font-sans text-white/60 text-xs">&copy; 2026 ProComfort HVAC. All rights reserved.</p>
+          <p className="font-sans text-white/60 text-xs">Denver, CO &middot; License #CO-HVAC-48291</p>
         </div>
 
         <div className="text-center mt-4">
           <a href="https://duraysdev.com/portfolio/procomfort-hvac" target="_blank" rel="noopener noreferrer"
-            className="font-sans text-white/20 text-xs hover:text-white/50 transition-colors">
+            className="font-sans text-white/60 text-xs hover:text-white/90 transition-colors">
             Design &amp; Development by Durays Dev
           </a>
         </div>

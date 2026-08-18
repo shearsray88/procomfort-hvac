@@ -3,18 +3,15 @@ import { motion } from 'framer-motion';
 export default function Hero() {
   return (
     <section className="relative flex items-center overflow-hidden" style={{ minHeight: '100vh' }}>
-      {/* Video background */}
+      {/* Background image (video source was dead, causing a console error on every load, so this is now a real img instead) */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
+        <img
+          src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&q=55&fm=webp"
+          alt=""
+          fetchpriority="high"
+          decoding="async"
           className="w-full h-full object-cover"
-          poster="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&q=80"
-        >
-          <source src="https://www.pexels.com/download/video/7239160/" type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-gray-900/70" />
         <div className="absolute inset-0 bg-orange-950/20" />
       </div>

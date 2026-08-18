@@ -37,6 +37,7 @@ export default function MapSection() {
         >
           <iframe
             key={active.id}
+            title={`Map showing ${active.name}`}
             src={active.mapUrl}
             width="100%"
             height="100%"
