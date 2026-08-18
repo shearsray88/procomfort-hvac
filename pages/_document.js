@@ -6,6 +6,8 @@ export default function Document() {
       <Head>
         <meta charSet="utf-8" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preload" as="image" href="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&q=40&fm=webp" fetchPriority="high" />
 
         {/* Primary Meta Tags */}
         <meta name="title" content="ProComfort HVAC - Denver Heating & Cooling Experts" />

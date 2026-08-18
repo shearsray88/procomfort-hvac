@@ -1,12 +1,10 @@
-import { motion } from 'framer-motion';
-
 export default function Hero() {
   return (
     <section className="relative flex items-center overflow-hidden" style={{ minHeight: '100vh' }}>
       {/* Background image (video source was dead, causing a console error on every load, so this is now a real img instead) */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&q=55&fm=webp"
+          src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&q=40&fm=webp"
           alt=""
           fetchpriority="high"
           decoding="async"
@@ -20,11 +18,7 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Left */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
+          <div className="hero-fade-up">
             <div className="flex items-center gap-2 mb-8">
               <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               <span className="font-sans text-xs text-white/60 tracking-wide">Serving Denver & Front Range</span>
@@ -59,15 +53,10 @@ export default function Hero() {
                 </div>
               </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right - Floating cards */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="hidden lg:flex flex-col gap-4"
-          >
+          <div className="hidden lg:flex flex-col gap-4 hero-fade-right">
             <div className="bg-orange-500/90 backdrop-blur-sm rounded-2xl p-8 relative overflow-hidden border border-orange-400/30">
               <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
               <div className="relative">
@@ -110,7 +99,7 @@ export default function Hero() {
                 <p className="text-white/40 text-xs mt-0.5">Trusted by 2,400+ homeowners</p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
