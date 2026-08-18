@@ -36,7 +36,7 @@ export default function Home() {
       </Head>
       <Navigation />
         <a href="tel:+13035550182"
-        className={`fixed bottom-6 right-6 z-50 md:hidden bg-brand text-white px-5 py-3 rounded-full shadow-lg font-bold text-sm flex items-center gap-2 transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 z-50 md:hidden bg-brand-dark text-white px-5 py-3 rounded-full shadow-lg font-bold text-sm flex items-center gap-2 transition-all duration-300 ${
           hideFab ? 'opacity-0 translate-y-4 pointer-events-none' : 'opacity-100 translate-y-0'
         }`}>
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
