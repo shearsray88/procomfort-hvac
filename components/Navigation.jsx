@@ -15,7 +15,7 @@ export default function Navigation() {
     <header className="sticky top-0 z-50 bg-gray-900 border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 h-16 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2">
-          <div className="w-7 h-7 bg-brand flex items-center justify-center rounded">
+          <div className="w-7 h-7 bg-brand-dark flex items-center justify-center rounded">
             <span className="text-white font-bold text-xs">PC</span>
           </div>
           <span className="font-sans font-semibold text-white text-sm tracking-wide">ProComfort <span className="text-brand-light">HVAC</span></span>

@@ -5,7 +5,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-7 h-7 bg-brand rounded flex items-center justify-center">
+              <div className="w-7 h-7 bg-brand-dark rounded flex items-center justify-center">
                 <span className="text-white font-bold text-xs">PC</span>
               </div>
               <span className="font-sans font-semibold text-white text-sm">ProComfort <span className="text-brand-light">HVAC</span></span>
