@@ -1,10 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+const NAV_ITEMS = ['Stats', 'Services', 'About', 'Reviews', 'Contact', 'Locations'];
 
 export default function Navigation() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const hero = document.getElementById('hero');
+    if (!hero) {
+      setScrolled(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => setScrolled(!entry.isIntersecting),
+      { rootMargin: '-96px 0px 0px 0px', threshold: 0 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, []);
+
+  const solid = scrolled || menuOpen;
 
   return (
-    <header className="sticky top-0 z-50 bg-gray-900 border-b border-white/10">
+    <header
+      className={`fixed top-0 inset-x-0 z-50 border-b transition-colors duration-300 ${
+        solid ? 'bg-gray-900 border-white/10' : 'bg-transparent border-transparent'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 sm:px-10 h-16 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2">
           <div className="w-7 h-7 bg-brand-dark flex items-center justify-center rounded">
@@ -12,8 +35,8 @@ export default function Navigation() {
           </div>
           <span className="font-sans font-semibold text-white text-sm tracking-wide">ProComfort <span className="text-brand-light">HVAC</span></span>
         </a>
-        <nav className="hidden md:flex items-center gap-8">
-          {['Services', 'About', 'Reviews', 'Contact'].map((item) => (
+        <nav className="hidden md:flex items-center gap-6">
+          {NAV_ITEMS.map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`}
               className="text-white/70 font-sans text-sm hover:text-white transition-colors">
               {item}
@@ -36,7 +59,7 @@ export default function Navigation() {
       </div>
       {menuOpen && (
         <div className="md:hidden bg-gray-900/95 backdrop-blur-sm px-6 py-4 flex flex-col gap-4">
-          {['Services', 'About', 'Reviews', 'Contact'].map((item) => (
+          {NAV_ITEMS.map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`}
               className="text-white/70 font-sans text-sm" onClick={() => setMenuOpen(false)}>
               {item}

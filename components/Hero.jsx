@@ -1,15 +1,25 @@
+import { useIsMobile } from '../hooks/useIsMobile';
+
 export default function Hero() {
+  const isMobile = useIsMobile();
+
   return (
-    <section className="relative flex items-center overflow-hidden" style={{ minHeight: '100vh' }}>
-      {/* Background image (video source was dead, causing a console error on every load, so this is now a real img instead) */}
+    <section id="hero" className="relative flex items-center overflow-hidden" style={{ minHeight: '100vh' }}>
+      {/* Background video, self-hosted in /public/videos/. Separate portrait clip serves mobile
+          (<768px) so phones don't download the landscape file, and vice versa. */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1600&q=40&fm=webp"
-          alt=""
-          fetchpriority="high"
-          decoding="async"
+        <video
+          key={isMobile ? 'mobile' : 'desktop'}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={isMobile ? '/videos/hero-poster-mobile.webp' : '/videos/hero-poster.webp'}
           className="w-full h-full object-cover"
-        />
+        >
+          <source src={isMobile ? '/videos/hero-mobile.mp4' : '/videos/hero-interior.mp4'} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gray-900/70" />
         <div className="absolute inset-0 bg-orange-950/20" />
       </div>
@@ -75,7 +85,7 @@ export default function Hero() {
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 </svg>
                 <p className="text-white font-bold text-sm mb-1">CO Licensed</p>
-                <p className="text-white/40 text-xs">#HVAC-CO-48291</p>
+                <p className="text-white/40 text-xs">#CO-HVAC-48291</p>
               </div>
               <div className="bg-orange-500/20 backdrop-blur-sm border border-orange-400/30 rounded-2xl p-6">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FB923C" strokeWidth="1.5" className="mb-4">
@@ -95,7 +105,7 @@ export default function Hero() {
                 </svg>
               </div>
               <div>
-                <p className="text-white font-bold text-sm">12+ Years in Denver</p>
+                <p className="text-white font-bold text-sm">14+ Years in Denver</p>
                 <p className="text-white/40 text-xs mt-0.5">Trusted by 2,400+ homeowners</p>
               </div>
             </div>

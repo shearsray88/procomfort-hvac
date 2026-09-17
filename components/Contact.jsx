@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mdarwbrv';
 
@@ -11,6 +12,7 @@ const SERVICES = [
 export default function Contact() {
   const [status, setStatus] = useState('idle');
   const [selected, setSelected] = useState('');
+  const isMobile = useIsMobile();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,10 +40,23 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28 bg-text-dark relative overflow-hidden">
+    <section id="contact" className="scroll-mt-16 bg-text-dark relative overflow-hidden" style={{ minHeight: '100vh' }}>
+      <div className="absolute inset-0 z-0">
+        <motion.img
+          key={isMobile ? 'mobile' : 'desktop'}
+          src={isMobile ? '/images/contact-mobile.jpg' : '/images/contact-desktop.jpg'}
+          alt=""
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gray-900/80" />
+      </div>
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand/10 rounded-full blur-3xl" />
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-10">
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-10 py-28 w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

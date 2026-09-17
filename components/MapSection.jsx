@@ -27,8 +27,8 @@ export default function MapSection() {
   const [mapActive, setMapActive] = useState(false);
 
   return (
-    <section className="bg-white pb-6">
-      <div className="grid lg:grid-cols-2" style={{ minHeight: '280px' }}>
+    <section id="locations" className="scroll-mt-16 bg-white pb-6">
+      <div className="grid lg:grid-cols-2" style={{ minHeight: '100vh' }}>
         <div
           className="relative overflow-hidden group/map"
           style={{ minHeight: '280px' }}
@@ -56,7 +56,7 @@ export default function MapSection() {
           )}
         </div>
 
-        <div className="bg-text-dark p-8 lg:p-10 flex flex-col justify-center">
+        <div className="bg-text-dark p-8 lg:p-10 flex flex-col justify-start">
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}

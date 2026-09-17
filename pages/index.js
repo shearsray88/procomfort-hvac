@@ -9,6 +9,7 @@ import Reviews from '../components/Reviews';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import MapSection from '../components/MapSection';
+import BackToTop from '../components/BackToTop';
 
 export default function Home() {
   const [hideFab, setHideFab] = useState(false);
@@ -54,6 +55,7 @@ export default function Home() {
       </main>
       <MapSection />
       <Footer />
+      <BackToTop />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const REASONS = [
   {
@@ -24,9 +25,26 @@ const REASONS = [
 ];
 
 export default function WhyUs() {
+  const isMobile = useIsMobile();
+
   return (
-    <section id="about" className="py-28 bg-gray-warm">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10">
+    <section id="about" className="scroll-mt-16 relative overflow-hidden flex items-center" style={{ minHeight: '100vh' }}>
+      <div className="absolute inset-0 z-0">
+        <motion.img
+          key={isMobile ? 'mobile' : 'desktop'}
+          src={isMobile ? '/images/about-mobile.jpg' : '/images/about-desktop.jpg'}
+          alt=""
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gray-900/75" />
+        <div className="absolute inset-0 bg-orange-950/20" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 py-28 w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -35,12 +53,12 @@ export default function WhyUs() {
           className="max-w-xl mb-16"
         >
           <span className="section-tag">Why ProComfort</span>
-          <h2 className="font-serif text-4xl sm:text-5xl font-normal text-text-dark leading-tight">
+          <h2 className="font-serif text-4xl sm:text-5xl font-normal text-white leading-tight">
             We do things differently around here.
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-gray-mid">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0 border-t border-white/10">
           {REASONS.map((r, i) => (
             <motion.div
               key={r.num}
@@ -48,11 +66,11 @@ export default function WhyUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="pt-10 pr-8 pb-12 md:pb-8 border-b md:border-b-0 md:border-r border-gray-mid last:border-r-0"
+              className="pt-10 pr-8 pb-12 md:pb-8 border-b md:border-b-0 md:border-r border-white/10 last:border-r-0"
             >
-              <span className="font-serif text-5xl text-brand-light/30 font-normal block mb-6">{r.num}</span>
-              <h3 className="font-sans font-semibold text-text-dark text-base mb-3">{r.title}</h3>
-              <p className="font-sans text-text-muted text-sm leading-relaxed">{r.desc}</p>
+              <span className="font-serif text-5xl text-orange-200/25 font-normal block mb-6">{r.num}</span>
+              <h3 className="font-sans font-semibold text-white text-base mb-3">{r.title}</h3>
+              <p className="font-sans text-white/60 text-sm leading-relaxed">{r.desc}</p>
             </motion.div>
           ))}
         </div>

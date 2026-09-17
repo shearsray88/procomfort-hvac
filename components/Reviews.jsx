@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const REVIEWS = [
   {
@@ -19,9 +20,26 @@ const REVIEWS = [
 ];
 
 export default function Reviews() {
+  const isMobile = useIsMobile();
+
   return (
-    <section id="reviews" className="py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10">
+    <section id="reviews" className="scroll-mt-16 relative overflow-hidden flex items-center" style={{ minHeight: '100vh' }}>
+      <div className="absolute inset-0 z-0">
+        <motion.img
+          key={isMobile ? 'mobile' : 'desktop'}
+          src={isMobile ? '/images/reviews-mobile.jpg' : '/images/reviews-desktop.jpg'}
+          alt=""
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gray-900/75" />
+        <div className="absolute inset-0 bg-orange-950/20" />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 py-28 w-full">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -30,7 +48,7 @@ export default function Reviews() {
             transition={{ duration: 0.6 }}
           >
             <span className="section-tag">Customer Reviews</span>
-            <h2 className="font-serif text-4xl sm:text-5xl font-normal text-text-dark leading-tight max-w-lg">
+            <h2 className="font-serif text-4xl sm:text-5xl font-normal text-white leading-tight max-w-lg">
               Do not take our word for it.
             </h2>
           </motion.div>
@@ -41,15 +59,15 @@ export default function Reviews() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex-shrink-0 text-right"
           >
-            <p className="font-serif text-4xl text-text-dark">4.9</p>
+            <p className="font-serif text-4xl text-white">4.9</p>
             <div className="flex gap-0.5 justify-end mt-1">
               {[0,1,2,3,4].map(i => <span key={i} className="text-brand text-sm">★</span>)}
             </div>
-            <p className="font-sans text-xs text-text-muted mt-1">312 Google Reviews</p>
+            <p className="font-sans text-xs text-white/60 mt-1">312 Google Reviews</p>
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-px bg-gray-mid">
+        <div className="grid md:grid-cols-3 gap-4">
           {REVIEWS.map((r, i) => (
             <motion.div
               key={r.name}
@@ -57,17 +75,17 @@ export default function Reviews() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white p-8 flex flex-col justify-between"
+              className="bg-white/5 border border-white/10 rounded-2xl backdrop-blur-sm p-8 flex flex-col justify-between"
             >
               <div className="flex gap-0.5 mb-6">
                 {[0,1,2,3,4].map(i => <span key={i} className="text-brand text-sm">★</span>)}
               </div>
-              <p className="font-sans text-text-mid text-sm leading-relaxed mb-8 italic">
+              <p className="font-sans text-white/80 text-sm leading-relaxed mb-8 italic">
                 "{r.text}"
               </p>
-              <div className="border-t border-gray-mid pt-5">
-                <p className="font-sans font-semibold text-text-dark text-sm">{r.name}</p>
-                <p className="font-sans text-text-muted text-xs mt-0.5">{r.location}</p>
+              <div className="border-t border-white/10 pt-5">
+                <p className="font-sans font-semibold text-white text-sm">{r.name}</p>
+                <p className="font-sans text-white/50 text-xs mt-0.5">{r.location}</p>
               </div>
             </motion.div>
           ))}
